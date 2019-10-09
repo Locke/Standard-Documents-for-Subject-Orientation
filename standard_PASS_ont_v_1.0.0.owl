@@ -1060,7 +1060,8 @@ By denoting their own data properties as sub-classes to this one the according d
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#contains"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#Transition"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#Transition"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1096,7 +1097,7 @@ By denoting their own data properties as sub-classes to this one the according d
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#belongsTo"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#SubjectBehavior"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1185,16 +1186,16 @@ The time unit for this timer transition is measured in business days. The defini
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasEndState"/>
+                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasInitialState"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#State"/>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#InitialStateOfChoiceSegmentPath"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasInitialState"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#InitialStateOfChoiceSegmentPath"/>
+                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasEndState"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#State"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1342,7 +1343,7 @@ Or it may occur during executing a do function, where it is used to define read(
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasDataType"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#DataTypeDefinition"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1377,7 +1378,7 @@ DataType: the definition of an Data Object&apos;s structure.</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#contains"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#DataObjectDefinition"/>
+                <owl:allValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#DataObjectDefinition"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">
@@ -1464,20 +1465,22 @@ b) write: in order to write incoming Data from e.g. a web Service or user input,
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasDataMappingFunction"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#DataMappingIncomingToLocal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasDataMappingFunction"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#DataMappingLocalToOutgoing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasFunctionSpecification"/>
                 <owl:allValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#DoFunction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasDataMappingFunction"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#DataMappingIncomingToLocal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasDataMappingFunction"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#DataMappingLocalToOutgoing"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.i2pm.net/standard-pass-ont#ReceiveState"/>
@@ -1533,15 +1536,16 @@ There are no individual end states that are not Do, Send, or Receive States at t
         <rdfs:subClassOf rdf:resource="http://www.i2pm.net/standard-pass-ont#Subject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasInputPoolConstraint"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#InputPoolConstraint"/>
+                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#containsBehavior"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#SubjectBehavior"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#containsBehavior"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#SubjectBehavior"/>
+                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasInputPoolConstraint"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#InputPoolConstraint"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1572,7 +1576,7 @@ There are no individual end states that are not Do, Send, or Receive States at t
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasToolSpecificDefinition"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1604,13 +1608,15 @@ Function Specifications are more than &quot;Data Properties&quot;? --&gt; - If s
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#guardsBehavior"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#SubjectBehavior"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#SubjectBehavior"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#guardsState"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#State"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#State"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A guard behavior is a special usually additional behavior that guards the Base Behavior of a subject.
@@ -1661,7 +1667,7 @@ It starts with a (guard) receive state denoting a special interrupting message. 
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasLimit"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1859,7 +1865,7 @@ InputPoolConstraintStrategy-Drop - Sending of the message succeeds. However the 
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasMessageType"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageSpecification"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1911,7 +1917,7 @@ While message exchanges are singular occurrences, they may be grouped in Message
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#contains"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageExchange"/>
+                <owl:allValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageExchange"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">While MessageExchanges are singular occurrences, they may be grouped in MessageExchangeLists. 
@@ -2078,25 +2084,29 @@ E.g. You can accept only &quot;three request at once&quot;</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasAdditionalAttribute"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#AdditionalAttribute"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#AdditionalAttribute"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasRelationToModelComponent"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageExchange"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageExchange"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasRelationToModelComponent"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#Subject"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#Subject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasStartSubject"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#StartSubject"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#StartSubject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The main class that contains all relevant process elements</rdfs:comment>
@@ -2228,7 +2238,8 @@ DefaultFunctionReceive2_AutoReceiveEarliest: automatically execute the according
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasDataMappingFunction"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#DataMappingIncomingToLocal"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#DataMappingIncomingToLocal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2361,12 +2372,6 @@ The condition  may be defined as frequency over a given interval. --&gt; e.g. 12
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasOutgoingTransition"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#SendingFailedTransition"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasFunctionSpecification"/>
                 <owl:allValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#SendFunction"/>
             </owl:Restriction>
@@ -2376,6 +2381,13 @@ The condition  may be defined as frequency over a given interval. --&gt; e.g. 12
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasOutgoingTransition"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#SendTransition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasOutgoingTransition"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#SendingFailedTransition"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The standard state in a PASS subject behavior diagram denoting a send action</rdfs:comment>
@@ -2390,7 +2402,8 @@ The condition  may be defined as frequency over a given interval. --&gt; e.g. 12
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasDataMappingFunction"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#DataMappingLocalToOutgoing"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#DataMappingLocalToOutgoing"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2560,19 +2573,22 @@ Usually there should be only one Start subject in a process context.</rdfs:comme
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#guardedBy"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#GuardBehavior"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#GuardBehavior"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasIncomingTransition"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#Transition"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#Transition"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasOutgoingTransition"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#Transition"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#Transition"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2618,13 +2634,15 @@ Usually there should be only one Start subject in a process context.</rdfs:comme
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasIncomingMessageExchange"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageExchange"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageExchange"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasOutgoingMessageExchange"/>
-                <owl:someValuesFrom rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageExchange"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#MessageExchange"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2679,14 +2697,14 @@ Usually there should be only one Start subject in a process context.</rdfs:comme
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasInitialState"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.i2pm.net/standard-pass-ont#InitialStateOfBehavior"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasPriorityNumber"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
             </owl:Restriction>
         </rdfs:subClassOf>
